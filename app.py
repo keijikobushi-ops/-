@@ -97,7 +97,7 @@ elif st.session_state.step == 'zinnnomanabi':
             st.session_state.step = 'goal'
             st.rerun()
     with col2:
-        if st.button('はい'):
+        if st.button('いいえ'):
             st.session_state.result = "リベラルアーツ文系系列"
             st.session_state.step = 'goal'
             st.rerun()
