@@ -1,3 +1,4 @@
+!pip install streamlit
 import streamlit as st
 
 st.set_page_config(page_title="系列選択",page_icon="🎓")
@@ -29,7 +30,7 @@ elif st.session_state.step == 'YES':
 
 elif st.session_state.step == 'rikei':
     st.subheader("Q3.どっちの方が好きですか？")
-    col1, col2,col3 =st.columns(3)
+    col1, col2,col3, col4 =st.columns(4)
     with col1:
         if st.button("宇宙・気象"):
             st.session_state.result = "宇宙気象系列"
@@ -52,14 +53,14 @@ elif st.session_state.step == 'rikei':
 
 elif st.session_state.step == 'bunnkei':
     st.subheader("あなたが興味を持ったのはどれですか")
-    col1, col2, col3, col4 =st.columns(4)
+    col1, col2, col3 =st.columns(3)
     with col1:
         if st.button("観光・防災") :
-            st.session_state.result = 'tinomanabi'
+            st.session_state.result = "tinomanabi"
             st.rerun()
     with col2:
         if st.button("言語・文化・歴史"):
-            st.session_state.result = 'zinnnomanabi'
+            st.session_state.result = "zinnnomanabi"
             st.rerun()
     with col3:
         if st.button("暗記は得意だった"):
