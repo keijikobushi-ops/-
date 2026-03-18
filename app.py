@@ -55,13 +55,11 @@ elif st.session_state.step == 'bunnkei':
     col1, col2, col3 =st.columns(3)
     with col1:
         if st.button("観光・防災") :
-            st.session_state.result = "tinomanabi"
-            st.session_state.step = 'goal'
+            st.session_state.step = 'tinomanabi'
             st.rerun()
     with col2:
         if st.button("言語・文化・歴史"):
-            st.session_state.result = "zinnnomanabi"
-            st.session_state.step = 'goal'
+            st.session_state.step = 'zinnnomanabi'
             st.rerun()
     with col3:
         if st.button("暗記は得意だった"):
