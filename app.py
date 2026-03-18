@@ -1,3 +1,4 @@
+!pip install streamlit
 import streamlit as st
 
 st.set_page_config(page_title="系列選択",page_icon="🎓")
@@ -80,11 +81,11 @@ elif st.session_state.step == 'tinomanabi':
             st.session_state.step = 'goal'
             st.rerun()
     with col3:
-        if st.button('自分に興味を持ったのは'):
+        if st.button('戻る', key="back_to_bunkei_2"):
             st.session_state.step = 'bunnkei'
             st.rerun()
     with col4:
-        if st.button('暗記は得意だった'):
+        if st.button('暗記が得意だった', key="back_to_rikei_2"):
             st.session_state.step = 'rikei'
             st.rerun()
 
@@ -92,21 +93,21 @@ elif st.session_state.step == 'zinnnomanabi':
     st.subheader("芸術や外国語に興味はありますか？")
     col1, col2, col3, col4 =st.columns(4)
     with col1:
-        if st.button('はい'):
+        if st.button('はい', key="final_yes"):
             st.session_state.result = "ダイバーシティー&インクルージョン系列"
             st.session_state.step = 'goal'
             st.rerun()
     with col2:
-        if st.button('いいえ'):
+        if st.button('いいえ', key="final_no"):
             st.session_state.result = "リベラルアーツ文系系列"
             st.session_state.step = 'goal'
             st.rerun()
     with col3:
-        if st.button('自分が興味を持ったのは言語・文化・歴史だった'):
-            st.session_state.step = 'bunkei'
+        if st.button('戻る', key="back_to_bunkei_3"):
+            st.session_state.step = 'bunnkei'
             st.rerun()
     with col4:
-        if st.button('暗記は得意だった'):
+        if st.button('暗記が得意だった', key="back_to_rikei_3"):
             st.session_state.step = 'rikei'
             st.rerun()
 
