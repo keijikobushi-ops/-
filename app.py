@@ -29,7 +29,7 @@ elif st.session_state.step == 'YES':
 
 elif st.session_state.step == 'rikei':
     st.subheader("Q3.どっちの方が好きですか？")
-    col1, col2,col3, col4 =st.columns(4)
+    col1, col2,col3 =st.columns(3)
     with col1:
         if st.button("宇宙・気象"):
             st.session_state.result = "宇宙気象系列"
