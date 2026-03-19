@@ -57,7 +57,7 @@ elif st.session_state.step == 'tennkaisetu':
             st.rerun()
 elif st.session_state.step == 'utyuukaisetu':
     st.subheader("宇宙・気象系列の解説")
-    st.write("""めざせ宇宙！守れ地球！の理数学習を進める。宇宙・気象への興味関心を高め、人類が今後目指すことになる宇宙に関連した産業や、地球の気候をふまえた暮らしや産業をリードする人材を育成する。""")
+    st.write("めざせ宇宙！守れ地球！の理数学習を進める。宇宙・気象への興味関心を高め、人類が今後目指すことになる宇宙に関連した産業や、地球の気候をふまえた暮らしや産業をリードする人材を育成する。")
     
     if st.button("解説一覧に戻る"):
         st.session_state.step = 'tennkaisetu'
