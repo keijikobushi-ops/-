@@ -70,7 +70,7 @@ elif st.session_state.step == 'tikaisetu':
             st.rerun()
 elif st.session_state.step == 'zinnkaisetu':
     st.subheader('人の学びの解説')
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(3)
     with col1:
         if st.button("ダイバーシティ＆インクルージョン系列の解説"):
             st.session_state.step = 'daibakaisetu'
