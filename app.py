@@ -9,12 +9,23 @@ if 'step' not in st.session_state:
     st.session_state.step = 'start'
 
 if  st.session_state.step == 'start':
-     st.subheader("Q1. 北神戸総合高校に興味はありますか？")
-     col1 = st.columns(1)
-     with col1[0]: # Changed from 'with col1:' to 'with col1[0]:'
-         if st.button("はい"):
+     st.subheader("北神戸総合高校系列選択へようこそ！(始める場合は始めるを押してね)")
+     col1, col2  = st.columns(2)
+     with col1:
+         if st.button("始める"):
           st.session_state.step = 'YES'
           st.rerun()
+     with col2:
+         if st.button("系列選択の説明を見る"):
+          st.session_state.step = 'NO'
+          st.rerun()
+elif st.session_state.step == 'YES':
+    st.subheader("Q1. 北神戸総合高校は好きですか？")
+    col1 = st.columns(1)
+    with col1[0]: # Changed from 'with col1:' to 'with col1[0]:'
+        if st.button("はい"):
+            st.session_state.step = 'YES'
+            st.rerun()
 elif st.session_state.step == 'YES':
     st.subheader("Q2. 暗記が得意ですか？思考判断が得意ですか？")
     col1, col2 = st.columns(2)
@@ -90,6 +101,7 @@ elif st.session_state.step == 'tinomanabi':
 
 elif st.session_state.step == 'zinnnomanabi':
     st.subheader("芸術や外国語に興味はありますか？")
+
     col1, col2, col3, col4 =st.columns(4)
     with col1:
         if st.button('はい', key="final_yes"):
