@@ -55,11 +55,20 @@ elif st.session_state.step == 'tennkaisetu':
         if st.button('戻る', key="back_to_bunkei_2"):
             st.session_state.step = 'NO'
             st.rerun()
-
 elif st.session_state.step == 'utyuukaisetu':
-    step = st.session.step
-    if step == "utyuukaisetu":
-        st.write("めざせ宇宙！守れ地球！の理数学習を進める。宇宙・気象への興味関心を高め、人類が今後目指すことになる宇宙に関連した産業や、地球の気候をふまえた暮らしや産業をリードする人材を育成する。")
+    st.subheader("宇宙・気象系列の解説")
+    st.write("""めざせ宇宙！守れ地球！の理数学習を進める。宇宙・気象への興味関心を高め、人類が今後目指すことになる宇宙に関連した産業や、地球の気候をふまえた暮らしや産業をリードする人材を育成する。""")
+    
+    if st.button("解説一覧に戻る"):
+        st.session_state.step = 'tennkaisetu'
+        st.rerun()
+elif st.session_state.step == 'DXkaisetu':
+    st.subheader("DX系列の解説")
+    st.write("ＡＩやＩｏＴを始めとするデジタル技術を活用して、産業社会における製品やサービス、ビジネスモデルそのものを変革する等、新たな価値を創造する人材を育成する。")
+    
+    if st.button("解説一覧に戻る", key="back_from_dx"):
+        st.session_state.step = 'tennkaisetu'
+        st.rerun()
  
 elif st.session_state.step == 'tikaisetu':
     st.subheader('地の学びの解説')
