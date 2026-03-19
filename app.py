@@ -19,6 +19,75 @@ if  st.session_state.step == 'start':
          if st.button("系列選択の説明を見る"):
           st.session_state.step = 'NO'
           st.rerun()
+elif st.session_state.step == 'NO':
+    st.subheader('KIKS系列説明')
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        if st.button("天の学び"):
+            st.session_state.step = 'tennkaisetu'
+            st.rerun()
+    with col2:
+        if st.button("地の学び"):
+            st.session_state.step = 'tikaisetu'
+            st.rerun()
+    with col3:
+        if st.button("人の学び"):
+            st.session_state.step = 'zinnkaisetu'
+            st.rerun()
+    with col4:
+        if st.button("戻る"):
+            st.session_state.step = 'start'
+            st.rerun()
+elif st.session_state.step == 'tennkaisetu':
+    st.subheader('天の学びの解説'):
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("宇宙・気象系列の解説"):
+            st.session_state.step = 'utyuukaisetu'
+            st.rerun()
+    with col2:
+        if st.button("DX系列の解説"):
+            st.session_state.step = 'DXkaisetu'
+            st.rerun()
+    with col3:
+        if st.button('戻る', key="back_to_bunkei_2"):
+            st.session_state.step = 'NO'
+            st,rerun()
+elif st.session_state.step == 'tikaisetu':
+    st.subheader('地の学びの解説'):
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("兵庫からスタートアップ系列の解説"):
+            st.session_state.step = 'utyuukaisetu'
+            st.rerun()
+    with col2:
+        if st.button("スポーツアウトドアと防災系列の解説"):
+            st.session_state.step = 'DXkaisetu'
+            st.rerun()
+    with col3:
+        if st.button('戻る', key="back_to_bunkei_3"):
+            st.session_state.step = 'NO'
+            st,rerun()
+elif st.session_state.step == 'zinnkaisetu':
+    st.subheader('人の学びの解説'):
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("ダイバーシティ＆インクルージョン系列の解説"):
+            st.session_state.step = 'daibakaisetu'
+            st.rerun()
+    with col2:
+        if st.button("リベラルアーツ理系系列の解説"):
+            st.session_state.step = 'riberikaisetu'
+            st.rerun()
+    with col3:
+        if st.button("リベラルアーツ文系系列の解説"):
+            st.session_state.step = 'ribebunnkaisetu'
+            st.rerun()
+    with col4:
+        if st.button('戻る', key="back_to_bunkei_4"):
+            st.session_state.step = 'NO'
+            st,rerun()
+
 elif st.session_state.step == 'IE':
     st.subheader("Q1. 北神戸総合高校は好きですか？")
     col1 = st.columns(1)
@@ -91,7 +160,7 @@ elif st.session_state.step == 'tinomanabi':
             st.session_state.step = 'goal'
             st.rerun()
     with col3:
-        if st.button('戻る', key="back_to_bunkei_2"):
+        if st.button('戻る', key="back_to_bunkei_5"):
             st.session_state.step = 'bunnkei'
             st.rerun()
     with col4:
@@ -114,7 +183,7 @@ elif st.session_state.step == 'zinnnomanabi':
             st.session_state.step = 'goal'
             st.rerun()
     with col3:
-        if st.button('戻る', key="back_to_bunkei_3"):
+        if st.button('戻る', key="back_to_bunkei_6"):
             st.session_state.step = 'bunnkei'
             st.rerun()
     with col4:
