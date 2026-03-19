@@ -19,6 +19,7 @@ if  st.session_state.step == 'start':
          if st.button("系列選択の説明を見る"):
           st.session_state.step = 'NO'
           st.rerun()
+
 elif st.session_state.step == 'NO':
     st.subheader('KIKS系列説明')
     col1, col2, col3, col4 = st.columns(4)
@@ -38,6 +39,7 @@ elif st.session_state.step == 'NO':
         if st.button("戻る"):
             st.session_state.step = 'start'
             st.rerun()
+
 elif st.session_state.step == 'tennkaisetu':
     st.subheader('天の学びの解説')
     col1, col2, col3 = st.columns(3)
@@ -53,21 +55,29 @@ elif st.session_state.step == 'tennkaisetu':
         if st.button('戻る', key="back_to_bunkei_2"):
             st.session_state.step = 'NO'
             st.rerun()
+
+elif st.session_state.step == 'utyuukaisetu':
+    st.subender('宇宙気象系列の解説')
+    step = st.session.step
+    if step == "utyuukaisetu":
+        st.write("めざせ宇宙！守れ地球！の理数学習を進める。宇宙・気象への興味関心を高め、人類が今後目指すことになる宇宙に関連した産業や、地球の気候をふまえた暮らしや産業をリードする人材を育成する。")
+ 
 elif st.session_state.step == 'tikaisetu':
     st.subheader('地の学びの解説')
     col1, col2, col3 = st.columns(3)
     with col1:
         if st.button("兵庫からスタートアップ系列の解説"):
-            st.session_state.step = 'utyuukaisetu'
+            st.session_state.step = 'hyogokaisetu'
             st.rerun()
     with col2:
         if st.button("スポーツアウトドアと防災系列の解説"):
-            st.session_state.step = 'DXkaisetu'
+            st.session_state.step = 'autodoakaisetu'
             st.rerun()
     with col3:
         if st.button('戻る', key="back_to_bunkei_3"):
             st.session_state.step = 'NO'
             st.rerun()
+
 elif st.session_state.step == 'zinnkaisetu':
     st.subheader('人の学びの解説')
     col1, col2, col3, col4 = st.columns(4)
@@ -95,6 +105,7 @@ elif st.session_state.step == 'IE':
         if st.button("はい"):
             st.session_state.step = 'YES'
             st.rerun()
+
 elif st.session_state.step == 'YES':
     st.subheader("Q2. 暗記が得意ですか？思考判断が得意ですか？")
     col1, col2 = st.columns(2)
