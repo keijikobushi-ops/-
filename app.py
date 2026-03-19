@@ -121,6 +121,28 @@ elif st.session_state.step == 'zinnkaisetu':
             st.session_state.step = 'NO'
             st.rerun()
 
+elif st.session_state.step == 'daibakaisetu':
+    st.subheader("ダイバーシティ＆インクルージョン系列の解説")
+    st.write("文化や年齢・様々な特性等を超えて、多様な人々と関わり理解し合うための学びを通じて、互いを認め合い生かし合えるグローバルなビジネスや文化、共生社会の担い手となる人材を育成する。")
+    
+    if st.button("解説一覧に戻る"):
+        st.session_state.step = 'zinnkaisetu'
+        st.rerun()
+elif st.session_state.step == 'riberikaisetu':
+    st.subheader("リベラルアーツ理系系列の解説")
+    st.write("普通科の教育課程に準じた科目配置に加えて、芸術系の科目や「キャリア探究」を設置し、複雑化する社会の諸問題に対して様々な視点を持ち、自分らしく生きるための基本となる教養を身に付ける。")
+    
+    if st.button("解説一覧に戻る", key="back_from_riberi"):
+        st.session_state.step = 'zinnkaisetu'
+        st.rerun()
+elif st.session_state.step == 'ribebunnkaisetu':
+    st.subheader("リベラルアーツ文系系列の解説")
+    st.write("普通科の教育課程に準じた科目配置に加えて、芸術系の科目や「キャリア探究」を設置し、複雑化する社会の諸問題に対して様々な視点を持ち、自分らしく生きるための基本となる教養を身に付ける。")
+    
+    if st.button("解説一覧に戻る", key="back_from_ribebun"):
+        st.session_state.step = 'zinnkaisetu'
+        st.rerun()
+
 elif st.session_state.step == 'IE':
     st.subheader("Q1. 北神戸総合高校は好きですか？")
     col1 = st.columns(1)
@@ -246,7 +268,7 @@ elif st.session_state.step == 'goal':
         st.write("文化や年齢・様々な特性等を超えて、多様な人々と関わり理解し合うための学びを通じて、互いを認め合い生かし合えるグローバルなビジネスや文化、共生社会の担い手となる人材を育成する。")
     
     elif result == "リベラルアーツ理系系列":
-        st.write("理数教育を軸としつつ、幅広い視野を養います。複雑化する社会の諸問題に対して理系的なアプローチで自分らしく生きるための教養を身に付ける。")
+        st.write("普通科の教育課程に準じた科目配置に加えて、芸術系の科目や「キャリア探究」を設置し、複雑化する社会の諸問題に対して様々な視点を持ち、自分らしく生きるための基本となる教養を身に付ける。")
     
     elif result == "リベラルアーツ文系系列":
         st.write("普通科の教育課程に準じた科目配置に加えて、芸術系の科目や「キャリア探究」を設置し、複雑化する社会の諸問題に対して様々な視点を持ち、自分らしく生きるための基本となる教養を身に付ける。")
