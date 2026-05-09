@@ -12,11 +12,13 @@ with st.sidebar:
     st.write("📖 **学校公式リンク**")
     st.markdown("- [北神戸総合高校 HP](https://dmzcms.hyogo-c.ed.jp/kitakobesogo-hs/NC3/) ※実際のURLへ")
     st.markdown("- [学校案内パンフレット](https://dmzcms.hyogo-c.ed.jp/kitakobesogo-hs/NC3/wysiwyg/file/download/1/151)")
-    st.markdown("- [KIKS男子ソフトテニス公式インスタグラム](https://www.instagram.com/kiks_soft.tennis_club01/)")
-    st.markdown("- [KIKS女子ソフトテニス公式インスタグラム](https://www.instagram.com/kiks1__soft_tennis/)")
-    st.markdown("- [KIKS卓球部公式インスタグラム](https://www.instagram.com/kiks_ttc/)")
-    st.markdown("- [KIKS写真部公式インスタグラム](https://www.instagram.com/kikssyashinbu/)")
-    st.markdown("- [KIKS放送部公式インスタグラム](https://www.instagram.com/kiks_hbc_official/)")
+    st.markdown("- [KIKS男子ソフトテニスインスタグラム](https://www.instagram.com/kiks_soft.tennis_club01/)")
+    st.markdown("- [KIKS女子ソフトテニスインスタグラム](https://www.instagram.com/kiks1__soft_tennis/)")
+    st.markdown("- [KIKS卓球部インスタグラム](https://www.instagram.com/kiks_ttc/)")
+    st.markdown("- [KIKS陸上競技部一期生インスタグラム](https://www.instagram.com/kiks._.tf1/)")
+    st.markdown("- [KIKS陸上競技部二期生インスタグラム](https://www.instagram.com/kiksss2_tf/?hl=ja)")
+    st.markdown("- [KIKS写真部インスタグラム](https://www.instagram.com/kikssyashinbu/)")
+    st.markdown("- [KIKS放送部インスタグラム](https://www.instagram.com/kiks_hbc_official/)")
     st.divider()
     if st.button("🔄 アプリをリセット"):
         st.session_state.step = 'start'
