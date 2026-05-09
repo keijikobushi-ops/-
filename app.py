@@ -1,3 +1,5 @@
+!pip install streamlit
+
 import streamlit as st
 
 # 1. ページ設定の強化（学校のカラーに合わせるなどの準備）
@@ -23,35 +25,18 @@ with st.sidebar:
         st.session_state.step = 'start'
         st.session_state.result = ""
         st.rerun()
-    st.divider()
-    st.subheader("📝 診断履歴")
-
-    if st.session_state.history:
-        for i, item in enumerate(reversed(st.session_state.history), 1):
-            st.write(f"{i}. {item}")
-    else:
-        st.caption("まだ診断履歴はありません")
-
+    
 # --- メイン画面 ---
 st.title("🎓 新入生のための系列選択ナビ")
 if st.session_state.step != 'start':
-    if st.button("⬅ 前の画面に戻る"):
-        st.session_state.step = st.session_state.last_step
-        st.rerun()
-
+    
 # セッション状態の初期化
 if 'step' not in st.session_state:
     st.session_state.step = 'start'
 
-if 'history' not in st.session_state:
-    st.session_state.history = []
-
-if 'last_step' not in st.session_state:
-    st.session_state.last_step = 'start'
-
 # 3. プログレスバー機能（追加）
 # 診断ステップに応じてゲージを増やす
-steps_map = {'IE': 20, 'YES': 40, 'rikei': 70, 'bunnkei': 70, 'tinomanabi': 90, 'zinnnomanabi': 90, 'goal': 100}
+steps_map = {'IE': 20, 'YES': 40, 'rikei': 80, 'bunnkei': 80, 'tinomanabi': 90, 'zinnnomanabi': 90, 'goal': 100}
 if st.session_state.step in steps_map:
     progress = steps_map[st.session_state.step]
     st.progress(progress / 100)
@@ -182,7 +167,7 @@ elif st.session_state.step == 'riberikaisetu':
 
 # --- 診断ロジック ---
 elif st.session_state.step == 'IE':
-    st.subheader("Q1. 北神戸総合高校で、新しい自分を見つけたいですか？")
+    st.subheader("Q1. 北神戸総合高校は好きですか？")
     if st.button("はい！", type="primary"):
         st.session_state.step = 'YES'
         st.rerun()
@@ -278,8 +263,6 @@ elif st.session_state.step == 'zinnnomanabi':
 elif st.session_state.step == 'goal':
     st.balloons()
     result = st.session_state.result
-    if result not in st.session_state.history:
-        st.session_state.history.append(result)
     st.success(f"あなたにおすすめなのは…\n\n## **【{result}】**")
 
     # 4. アドバイス機能（追加）
@@ -292,18 +275,6 @@ elif st.session_state.step == 'goal':
         "リベラルアーツ理系系列": "普通科の教育課程に準じた科目配置に加えて、芸術系の科目や「キャリア探究」を設置し、複雑化する社会の諸問題に対して様々な視点を持ち、自分らしく生きるための基本となる教養を身に付ける。",
         "リベラルアーツ文系系列": "普通科の教育課程に準じた科目配置に加えて、芸術系の科目や「キャリア探究」を設置し、複雑化する社会の諸問題に対して様々な視点を持ち、自分らしく生きるための基本となる教養を身に付ける。"
     }
-
-    keywords = {
-    "宇宙気象系列": ["宇宙", "気象", "理科", "探究"],
-    "DX系列": ["AI", "プログラミング", "IoT", "デジタル"],
-    "兵庫からスタートアップ系列": ["地域活性", "観光", "企画", "ビジネス"],
-    "スポーツアウトドアと防災系列": ["防災", "スポーツ", "リーダー", "アウトドア"],
-    "ダイバーシティー&インクルージョン系列": ["多文化", "共生", "国際理解", "コミュニケーション"],
-    "リベラルアーツ理系系列": ["教養", "探究", "芸術", "理系"],
-    "リベラルアーツ文系系列": ["教養", "探究", "芸術", "文系"]
-    }
-    st.write("### あなたに向いているキーワード")
-    st.write(" / ".join(keywords.get(result, [])))
 
     st.info(descriptions.get(result, ""))
 
