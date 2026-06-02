@@ -30,8 +30,6 @@ st.title("🎓 新入生のための系列選択ナビ")
     st.session_state.step = 'start'
         
 # セッション状態の初期化
-if 'step' not in st.session_state:
-    st.session_state.step = 'start'
 
 # 3. プログレスバー機能（追加）
 # 診断ステップに応じてゲージを増やす
