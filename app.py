@@ -23,11 +23,11 @@ with st.sidebar:
         st.session_state.step = 'start'
         st.session_state.result = ""
         st.rerun()
-    
+
+if 'step' not in st.session_state:
+   st.session_state.step = 'start'
 # --- メイン画面 ---
 st.title("🎓 新入生のための系列選択ナビ")
-    if 'step' not in st.session_state:
-    st.session_state.step = 'start'
         
 # セッション状態の初期化
 
