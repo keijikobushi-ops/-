@@ -24,12 +24,11 @@ with st.sidebar:
         st.session_state.result = ""
         st.rerun()
 
-if 'step' not in st.session_state:
-   st.session_state.step = 'start'
-# --- メイン画面 ---
-st.title("🎓 新入生のための系列選択ナビ")
-        
 # セッション状態の初期化
+if 'step' not in st.session_state:
+    st.session_state.step = 'start'
+#-メイン画面ーー
+st.title("🎓 新入生のための系列選択ナビ")
 
 # 3. プログレスバー機能（追加）
 # 診断ステップに応じてゲージを増やす
