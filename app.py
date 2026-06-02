@@ -26,7 +26,6 @@ with st.sidebar:
     
 # --- メイン画面 ---
 st.title("🎓 新入生のための系列選択ナビ")
-
     
 # セッション状態の初期化
 if 'step' not in st.session_state:
