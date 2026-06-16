@@ -118,7 +118,7 @@ if st.session_state.step == 'start':
     st.write("あなたの未来をデザインする「系列選択」をお手伝いします。")
 
     # 追加機能：学校生活ヒント
-    st.success(f"💡 **新入生へのヒント**\n{random.choice(SCHOOL_TIPS)}")
+    #st.success(f"💡 **新入生へのヒント**\n{random.choice(SCHOOL_TIPS)}")
 
     col1, col2 = st.columns(2)
     with col1:
