@@ -27,13 +27,13 @@ KEYWORDS = {
 }
 
 # 追加機能: 学校生活ヒントの定義
-#SCHOOL_TIPS = [
-#    "色々なクラブ活動に参加して、新しい友達を作ろう！",
-#    "先生や先輩に気軽に質問してみよう。きっと新しい発見があるよ！",
-#    "興味のあることには積極的に挑戦しよう。それが未来につながる第一歩！",
-#    "図書館や自習室を活用して、自分のペースで学習を進めよう。",
-#    "ボランティア活動に参加して、地域とのつながりを深めよう！"
-#]
+SCHOOL_TIPS = [    
+    "色々なクラブ活動に参加して、新しい友達を作ろう！",
+    "先生や先輩に気軽に質問してみよう。きっと新しい発見があるよ！",
+    "興味のあることには積極的に挑戦しよう。それが未来につながる第一歩！",
+    "図書館や自習室を活用して、自分のペースで学習を進めよう。",
+    "ボランティア活動に参加して、地域とのつながりを深めよう！"
+]
 
 # --- セッション状態の初期化 ---
 if 'step' not in st.session_state:
@@ -118,7 +118,7 @@ if st.session_state.step == 'start':
     st.write("あなたの未来をデザインする「系列選択」をお手伝いします。")
 
     # 追加機能：学校生活ヒント
-    #st.success(f"💡 **新入生へのヒント**\n{random.choice(SCHOOL_TIPS)}")
+    st.success(f"💡 **新入生へのヒント**\n{random.choice(SCHOOL_TIPS)}")
 
     col1, col2 = st.columns(2)
     with col1:
@@ -193,7 +193,7 @@ elif st.session_state.step == 'riberikaisetu':
 
 # --- 診断ロジック（ロジック維持＋機能追加） ---
 elif st.session_state.step == 'IE':
-    st.subheader("Q1. 北神戸総合高校で、新しい自分を見つけたいですか？")
+    st.subheader("Q1. 北神戸総合高校は好きですか？")
     if st.button("はい！", type="primary"): move_to('YES'); st.rerun()
 
 elif st.session_state.step == 'YES':
