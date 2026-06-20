@@ -194,7 +194,11 @@ elif st.session_state.step == 'riberikaisetu':
 # --- 診断ロジック（ロジック維持＋機能追加） ---
 elif st.session_state.step == 'IE':
     st.subheader("Q1. 北神戸総合高校は好きですか？")
-    if st.button("はい！", type="primary"): move_to('YES'); st.rerun()
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("はい！", use_container_width=True): move_to('YES'); st.rerun()
+    with col2:
+        if st.button("いいえ", use_container_width=True): move_to('NO'); st.rerun()
 
 elif st.session_state.step == 'YES':
     st.subheader("Q2. あなたの得意（または好き）なのはどっち？")
