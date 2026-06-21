@@ -198,7 +198,15 @@ elif st.session_state.step == 'IE':
     with col1:
         if st.button("はい！", use_container_width=True): move_to('YES'); st.rerun()
     with col2:
-        if st.button("いいえ", use_container_width=True): move_to('NO'); st.rerun()
+        if st.button("いいえ", use_container_width=True): move_to('NOT'); st.rerun()
+
+elif st.session_state.step == 'NOT':
+    st.subheader("Q1. 本当に好きじゃないですか？")
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("はい", use_container_width=True): move_to('NOT'); st.rerun()
+    with col2:
+        if st.button("いいえ", use_container_width=True): move_to('YES'); st.rerun()
 
 elif st.session_state.step == 'YES':
     st.subheader("Q2. あなたの得意（または好き）なのはどっち？")
