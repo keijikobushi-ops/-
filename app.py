@@ -104,7 +104,7 @@ with st.sidebar:
 st.title("🎓 新入生のための系列選択ナビ")
 
 # プログレスバー
-steps_map = {'IE': 20, 'YES': 40, 'NOT': 40, 'rikei': 70, 'bunnkei': 70, 'tinomanabi': 90, 'zinnnomanabi': 90, 'goal': 100}
+steps_map = {'IE': 20, 'YES': 40, 'NOT': 40, 'IIE': 40, 'rikei': 70, 'bunnkei': 70, 'tinomanabi': 90, 'zinnnomanabi': 90, 'goal': 100}
 if st.session_state.step in steps_map:
     progress = steps_map[st.session_state.step]
     st.progress(progress / 100)
@@ -202,6 +202,14 @@ elif st.session_state.step == 'IE':
 
 elif st.session_state.step == 'NOT':
     st.subheader("Q1. 本当に好きじゃないですか？")
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("はい", use_container_width=True): move_to('IIE'); st.rerun()
+    with col2:
+        if st.button("いいえ", use_container_width=True): move_to('YES'); st.rerun()
+
+elif st.session_state.step == 'IIE':
+    st.subheader("Q1. 本当にそうですか？")
     col1, col2 = st.columns(2)
     with col1:
         if st.button("はい", use_container_width=True): move_to('NOT'); st.rerun()
