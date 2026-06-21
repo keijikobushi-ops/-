@@ -104,7 +104,7 @@ with st.sidebar:
 st.title("🎓 新入生のための系列選択ナビ")
 
 # プログレスバー
-steps_map = {'IE': 20, 'YES': 40, 'NOT': 30, 'IIE': 30, 'rikei': 70, 'bunnkei': 70, 'tinomanabi': 90, 'zinnnomanabi': 90, 'goal': 100}
+steps_map = {'IE': 30, 'YES': 40, 'NOT': 10, 'IIE': 20, 'rikei': 70, 'bunnkei': 70, 'tinomanabi': 90, 'zinnnomanabi': 90, 'goal': 100}
 if st.session_state.step in steps_map:
     progress = steps_map[st.session_state.step]
     st.progress(progress / 100)
