@@ -244,7 +244,7 @@ elif st.session_state.step == 'Q1':
             st.rerun()
     with col3:
         if st.button("C. 人と協力して開ける", use_container_width=True):
-            st.session_state.scores["ダイバーシティー＆インクルージョン系列"] += 1
+            st.session_state.scores["ダイバーシティー&インクルージョン系列"] += 1
             st.session_state.step = 'Q2'
             st.rerun()
     with col4:
@@ -316,7 +316,7 @@ elif st.session_state.step == 'Q4':
             st.rerun()
   with col3:
       if st.button("C. ルールを決める", use_container_width=True):
-            st.session_state.scores["ダイバーシティー＆インクルージョン系列"] += 1
+            st.session_state.scores["ダイバーシティー&インクルージョン系列"] += 1
             st.session_state.step = 'Q5'
             st.rerun()
   with col4:
