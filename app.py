@@ -258,12 +258,12 @@ elif st.session_state.step == 'Q2':
   col1, col2, col3, col4 = st.columns(4)
   with col1:
       if st.button("A. 植物を観察する", use_container_width=True):
-            st.session_state.scores["宇宙気象系列系列"] += 1
+            st.session_state.scores["宇宙気象系列"] += 1
             st.session_state.step = 'Q3'
             st.rerun()
   with col2:
       if st.button("B.店を開いてお土産として売る", use_container_width=True):
-            st.session_state.scores["兵庫からスタートアップ系列系列"] += 1
+            st.session_state.scores["兵庫からスタートアップ系列"] += 1
             st.session_state.step = 'Q3'
             st.rerun()
   with col3:
@@ -297,7 +297,7 @@ elif st.session_state.step == 'Q3':
             st.rerun()
   with col4:
       if st.button("D.科学技術やエネルギー事情", use_container_width=True):
-            st.session_state.scores["リベラルアーツ理系系列系列"] += 1
+            st.session_state.scores["リベラルアーツ理系系列"] += 1
             st.session_state.step = 'Q4'
             st.rerun()
 
@@ -369,7 +369,7 @@ elif st.session_state.step == 'Q6':
             st.rerun()
   with col4:
       if st.button("D. 閉館後の美術館や図書館に行く", use_container_width=True):
-            st.session_state.scores["系列"] += 1
+            st.session_state.scores["リベラルアーツ文系系列"] += 1
             st.session_state.step = 'Q7'
             st.rerun()
 
