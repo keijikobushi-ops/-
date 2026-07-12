@@ -451,22 +451,22 @@ elif st.session_state.step == 'Q10':
   with col1:
       if st.button("A. 全校生徒でeスポーツ大会を開く", use_container_width=True):
             st.session_state.scores["DX系列"] += 1
-            st.session_state.step = 'Q'
+            st.session_state.step = 'goal'
             st.rerun()
   with col2:
       if st.button("B. みんなでBBQ＆キャンプをする", use_container_width=True):
             st.session_state.scores["スポーツアウトドアと防災系列"] += 1
-            st.session_state.step = 'Q'
+            st.session_state.step = 'goal'
             st.rerun()
   with col3:
       if st.button("C. お互いがダンスやアートなどを披露する", use_container_width=True):
             st.session_state.scores["ダイバーシティー&インクルージョン系列"] += 1
-            st.session_state.step = 'Q'
+            st.session_state.step = 'goal'
             st.rerun()
   with col4:
       if st.button("D. 時間割をなくし自由登校にする", use_container_width=True):
             st.session_state.scores["リベラルアーツ文系系列"] += 1
-            st.session_state.step = 'Q'
+            st.session_state.step = 'goal'
             st.rerun()
 
 # --- 結果画面 ---
