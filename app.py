@@ -473,7 +473,7 @@ elif st.session_state.step == 'Q10':
             st.rerun()
 
 elif st.session_state.step == 'suki':
-    st.subheader("Q1. 北神戸総合高校は好きですか？")
+    st.subheader("Q1. 北神戸総合高校を好きになりましたか？")
     col1, col2 = st.columns(2)
     with col1:
         if st.button("はい!",use_container_width=True): move_to("goal"); st.rerun()
