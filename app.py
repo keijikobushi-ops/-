@@ -109,7 +109,7 @@ with st.sidebar:
 st.title("🎓 新入生のための系列選択ナビ")
 
 # プログレスバー
-steps_map = {'IE': 10, 'IIE': 5, 'NOT': 5, 'Q1': 18, 'Q2': 26,'Q3': 34, 'Q4': 42, 'Q5': 50, 'Q6': 58, 'Q7': 66, 'Q8': 74, 'Q9': 82, 'Q10': 90 'suki': 99, 'tiga': 0, 'tya': 0, 'goal': 100}
+steps_map = {'IE': 10, 'IIE': 5, 'NOT': 5, 'Q1': 18, 'Q2': 26,'Q3': 34, 'Q4': 42, 'Q5': 50, 'Q6': 58, 'Q7': 66, 'Q8': 74, 'Q9': 82, 'Q10': 90, 'suki': 99, 'tiga': 0, 'tya': 0, 'goal': 100}
 if st.session_state.step in steps_map:
     progress = steps_map[st.session_state.step]
     st.progress(progress / 100)
