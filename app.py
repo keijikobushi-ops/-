@@ -46,6 +46,9 @@ if 'diagnosis_history' not in st.session_state:
     st.session_state.diagnosis_history = []  # 診断結果履歴
 
 
+if 'diagnosis_history' not in st.session_state:
+    st.session_state.diagnosis_history = []
+
 # --- 関数定義 ---
 def move_to(next_step):
     """次のステップへ進む（履歴に保存）"""
@@ -106,7 +109,7 @@ with st.sidebar:
 st.title("🎓 新入生のための系列選択ナビ")
 
 # プログレスバー
-steps_map = {'IE': 20, 'YES': 40, 'NOT': 40, 'rikei': 70, 'bunnkei': 70, 'tinomanabi': 90, 'zinnnomanabi': 90, 'goal': 100}
+steps_map = {'IE': 10, 'IIE': 5, 'NOT': 5, 'Q1': 19, 'Q2': 28,'Q3': 37, 'Q4': 46, 'Q5': 55, 'Q6': 64, 'Q7': 73, 'Q8': 82, 'Q9': 91, 'suki': 99, 'tiga': 0, 'tya': 0, 'goal': 100}
 if st.session_state.step in steps_map:
     progress = steps_map[st.session_state.step]
     st.progress(progress / 100)
@@ -451,28 +454,61 @@ elif st.session_state.step == 'Q10':
   with col1:
       if st.button("A. 全校生徒でeスポーツ大会を開く", use_container_width=True):
             st.session_state.scores["DX系列"] += 1
-            st.session_state.step = 'goal'
+            st.session_state.step = 'suki'
             st.rerun()
   with col2:
       if st.button("B. みんなでBBQ＆キャンプをする", use_container_width=True):
             st.session_state.scores["スポーツアウトドアと防災系列"] += 1
-            st.session_state.step = 'goal'
+            st.session_state.step = 'suki'
             st.rerun()
   with col3:
       if st.button("C. お互いがダンスやアートなどを披露する", use_container_width=True):
             st.session_state.scores["ダイバーシティー&インクルージョン系列"] += 1
-            st.session_state.step = 'goal'
+            st.session_state.step = 'suki'
             st.rerun()
   with col4:
       if st.button("D. 時間割をなくし自由登校にする", use_container_width=True):
             st.session_state.scores["リベラルアーツ文系系列"] += 1
-            st.session_state.step = 'goal'
+            st.session_state.step = 'suki'
             st.rerun()
+
+elif st.session_state.step == 'suki':
+    st.subheader("Q1. 北神戸総合高校は好きですか？")
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("はい!",use_container_width=True): move_to("goal"); st.rerun()
+    with col2:
+        if st.button("いいえ",use_container_width=True): move_to("tiga"); st.rerun()
+
+elif st.session_state.step == 'tiga':
+    st.subheader("Q1. 本当に好きじゃないですか？")
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("はい",use_container_width=True): move_to("tya"); st.rerun()
+    with col2:
+        if st.button("いいえ",use_container_width=True):move_to("suki"); st.rerun()
+
+elif st.session_state.step == 'tya':
+    st.subheader("Q1. 本当にそうですか？")
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("はい", use_container_width=True): move_to('tiga'); st.rerun()
+    with col2:
+        if st.button("いいえ", use_container_width=True): move_to('suki'); st.rerun()
 
 # --- 結果画面 ---
 elif st.session_state.step == 'goal':
     st.balloons()
     highest_series = max(st.session_state.scores, key=st.session_state.scores.get)
+
+    # 👇 ここから：結果を履歴に追加するコードを追加！
+    if 'diagnosis_history' not in st.session_state:
+        st.session_state.diagnosis_history = []
+    # まだ今回の結果が履歴の最後に入っていない場合だけ追加（重複防止）
+    if not st.session_state.diagnosis_history or st.session_state.diagnosis_history[-1] != highest_series:
+        st.session_state.diagnosis_history.append(highest_series)
+    # 👆 ここまでを追加
+    
     st.success(f"診断完了！あなたにおすすめなのは…\n\n## 🌟 **【{highest_series}】**")
     
     descriptions = {
