@@ -542,6 +542,7 @@ elif st.session_state.step == 'goal':
     else:
         st.write("該当するキーワードがありません。")
 
+    st.write("---")
     st.write("※あくまでも診断です。魔にうけないようにしてくだい")
  
     st.divider()
