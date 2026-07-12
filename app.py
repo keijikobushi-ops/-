@@ -355,7 +355,7 @@ elif st.session_state.step == 'Q6':
   with col1:
       if st.button("A. 国家機密を盗み出す", use_container_width=True):
             st.session_state.scores["DX系列"] += 1
-            st.session_state.step = 'Q7 '
+            st.session_state.step = 'Q7'
             st.rerun()
   with col2:
       if st.button("B. バズってる店の裏側をみる", use_container_width=True):
