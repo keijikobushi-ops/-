@@ -350,7 +350,7 @@ elif st.session_state.step == 'Q5':
             st.rerun()
 
 elif st.session_state.step == 'Q6':
-  st.subheader("Q朝起きたら、なぜか自分の体が「透明人間」になっていました！最初にする行動は？")
+  st.subheader("Q6. 朝起きたら、なぜか自分の体が「透明人間」になっていました！最初にする行動は？")
   col1, col2, col3, col4 = st.columns(4)
   with col1:
       if st.button("A. 国家機密を盗み出す", use_container_width=True):
@@ -492,11 +492,15 @@ elif st.session_state.step == 'goal':
         st.write(f"- {series}: {score}点")
 
     # 追加機能：向いているキーワード
-    st.write("---")
-    st.write("**🔍 この系列に向いているキーワード**")
-    k_cols = st.columns(len(KEYWORDS.get(res, [])))
-    for i, kw in enumerate(KEYWORDS.get(res, [])):
-        k_cols[i].markdown(f"✅ {kw}")
+    # ◯ 修正案：今回の変数（highest_series）に合わせる場合
+
+    # KEYWORDS という辞書データがプログラムのどこかで定義されているか確認してください。
+    # もし定義されているなら、res を highest_series に書き換えます。
+    if 'KEYWORDS' in globals():
+        keywords_list = KEYWORDS.get(highest_series, [])
+        if keywords_list:
+            k_cols = st.columns(len(keywords_list))
+        # ...その後のループ処理など
 
     st.divider()
     if st.button("最初からやり直す", type="primary", use_container_width=True):
