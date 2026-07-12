@@ -541,6 +541,8 @@ elif st.session_state.step == 'goal':
             k_cols[i].markdown(f"✅ {kw}")
     else:
         st.write("該当するキーワードがありません。")
+
+    st.write("※あくまでも診断です。魔にうけないようにしてくだい")
  
     st.divider()
     if st.button("最初からやり直す", type="primary", use_container_width=True):
