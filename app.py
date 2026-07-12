@@ -17,10 +17,10 @@ DESCRIPTIONS = {
 
 # 追加機能：向いているキーワード
 KEYWORDS = {
-    "宇宙気象系列": ["宇宙開発", "環境保護", "気象観測", "理数探究"],
+    "宇宙・気象系列": ["宇宙開発", "環境保護", "気象観測", "理数探究"],
     "DX系列": ["プログラミング", "AI活用", "ビジネス変革", "論理的思考"],
-    "兵庫からスタートアップ系列": ["地域創生", "起業家精神", "観光ビジネス", "企画力"],
-    "スポーツアウトドアと防災系列": ["リーダーシップ", "野外活動", "地域防災", "健康科学"],
+    "ひょうごからスタートアップ系列": ["地域創生", "起業家精神", "観光ビジネス", "企画力"],
+    "スポーツ・アウトドアと防災系列": ["リーダーシップ", "野外活動", "地域防災", "健康科学"],
     "ダイバーシティー&インクルージョン系列": ["国際理解", "共生社会", "多様性", "コミュニケーション"],
     "リベラルアーツ理系系列": ["幅広い教養", "芸術的感性", "キャリア探究", "理系基礎"],
     "リベラルアーツ文系系列": ["多角的視点", "文化・芸術", "自己探究", "文系基礎"]
@@ -117,11 +117,11 @@ if st.session_state.step in steps_map:
 
 if 'scores' not in st.session_state:
     st.session_state.scores = {
-        "宇宙気象系列": 0,
+        "宇宙・気象系列": 0,
         "DX系列": 0,
         "リベラルアーツ理系系列": 0,
-        "兵庫からスタートアップ系列": 0,
-        "スポーツアウトドアと防災系列": 0,
+        "ひょうごからスタートアップ系列": 0,
+        "スポーツ・アウトドアと防災系列": 0,
         "ダイバーシティー&インクルージョン系列": 0,
         "リベラルアーツ文系系列": 0
     }
@@ -242,7 +242,7 @@ elif st.session_state.step == 'Q1':
             st.rerun()
     with col2:
         if st.button("B. 箱を観察する", use_container_width=True):
-            st.session_state.scores["宇宙気象系列"] += 1
+            st.session_state.scores["宇宙・気象系列"] += 1
             st.session_state.step = 'Q2'
             st.rerun()
     with col3:
@@ -261,12 +261,12 @@ elif st.session_state.step == 'Q2':
   col1, col2, col3, col4 = st.columns(4)
   with col1:
       if st.button("A. 植物を観察する", use_container_width=True):
-            st.session_state.scores["宇宙気象系列"] += 1
+            st.session_state.scores["宇宙・気象系列"] += 1
             st.session_state.step = 'Q3'
             st.rerun()
   with col2:
       if st.button("B.店を開いてお土産として売る", use_container_width=True):
-            st.session_state.scores["兵庫からスタートアップ系列"] += 1
+            st.session_state.scores["ひょうごからスタートアップ系列"] += 1
             st.session_state.step = 'Q3'
             st.rerun()
   with col3:
@@ -276,7 +276,7 @@ elif st.session_state.step == 'Q2':
             st.rerun()
   with col4:
       if st.button("D. 注意を促す看板を作る", use_container_width=True):
-            st.session_state.scores["スポーツアウトドアと防災系列"] += 1
+            st.session_state.scores["スポーツ・アウトドアと防災系列"] += 1
             st.session_state.step = 'Q3'
             st.rerun()
 
@@ -290,7 +290,7 @@ elif st.session_state.step == 'Q3':
             st.rerun()
   with col2:
       if st.button("B. 火星や月への移住", use_container_width=True):
-            st.session_state.scores["宇宙気象系列"] += 1
+            st.session_state.scores["宇宙・気象系列"] += 1
             st.session_state.step = 'Q4'
             st.rerun()
   with col3:
@@ -314,7 +314,7 @@ elif st.session_state.step == 'Q4':
             st.rerun()
   with col2:
       if st.button("B. 危ないところがないか確認する", use_container_width=True):
-            st.session_state.scores["スポーツアウトドアと防災系列"] += 1
+            st.session_state.scores["スポーツ・アウトドアと防災系列"] += 1
             st.session_state.step = 'Q5'
             st.rerun()
   with col3:
@@ -338,12 +338,12 @@ elif st.session_state.step == 'Q5':
             st.rerun()
   with col2:
       if st.button("B. ゴミをエネルギーに変えるマシン", use_container_width=True):
-            st.session_state.scores["宇宙気象系列"] += 1
+            st.session_state.scores["宇宙・気象系列"] += 1
             st.session_state.step = 'Q6'
             st.rerun()
   with col3:
       if st.button("C. 新しいお店やテーマパーク", use_container_width=True):
-            st.session_state.scores["兵庫からスタートアップ系列"] += 1
+            st.session_state.scores["ひょうごからスタートアップ系列"] += 1
             st.session_state.step = 'Q6'
             st.rerun()
   with col4:
@@ -362,12 +362,12 @@ elif st.session_state.step == 'Q6':
             st.rerun()
   with col2:
       if st.button("B. バズってる店の裏側をみる", use_container_width=True):
-            st.session_state.scores["兵庫からスタートアップ系列"] += 1
+            st.session_state.scores["ひょうごからスタートアップ系列"] += 1
             st.session_state.step = 'Q7'
             st.rerun()
   with col3:
       if st.button("C. 人助けをする", use_container_width=True):
-            st.session_state.scores["スポーツアウトドアと防災系列"] += 1
+            st.session_state.scores["スポーツ・アウトドアと防災系列"] += 1
             st.session_state.step = 'Q7'
             st.rerun()
   with col4:
@@ -386,7 +386,7 @@ elif st.session_state.step == 'Q7':
             st.rerun()
   with col2:
       if st.button("B. 新しいビジネスとして広める", use_container_width=True):
-            st.session_state.scores["兵庫からスタートアップ系列"] += 1
+            st.session_state.scores["ひょうごからスタートアップ系列"] += 1
             st.session_state.step = 'Q8'
             st.rerun()
   with col3:
@@ -410,12 +410,12 @@ elif st.session_state.step == 'Q8':
             st.rerun()
   with col2:
       if st.button("B. 壮大な自然のドキュメンタリー", use_container_width=True):
-            st.session_state.scores["宇宙気象系列"] += 1
+            st.session_state.scores["宇宙・気象系列"] += 1
             st.session_state.step = 'Q9'
             st.rerun()
   with col3:
       if st.button("C. 寂れた港町を復興させる物語", use_container_width=True):
-            st.session_state.scores["兵庫からスタートアップ系列"] += 1
+            st.session_state.scores["ひょうごからスタートアップ系列"] += 1
             st.session_state.step = 'Q9'
             st.rerun()
   with col4:
@@ -439,7 +439,7 @@ elif st.session_state.step == 'Q9':
             st.rerun()
   with col3:
       if st.button("C. 周りの大人や警察にすぐ連絡する", use_container_width=True):
-            st.session_state.scores["スポーツアウトドアと防災系列"] += 1
+            st.session_state.scores["スポーツ・アウトドアと防災系列"] += 1
             st.session_state.step = 'Q10'
             st.rerun()
   with col4:
@@ -458,7 +458,7 @@ elif st.session_state.step == 'Q10':
             st.rerun()
   with col2:
       if st.button("B. みんなでBBQ＆キャンプをする", use_container_width=True):
-            st.session_state.scores["スポーツアウトドアと防災系列"] += 1
+            st.session_state.scores["スポーツ・アウトドアと防災系列"] += 1
             st.session_state.step = 'suki'
             st.rerun()
   with col3:
@@ -512,10 +512,10 @@ elif st.session_state.step == 'goal':
     st.success(f"診断完了！あなたにおすすめなのは…\n\n## 🌟 **【{highest_series}】**")
     
     descriptions = {
-        "宇宙気象系列": "めざせ宇宙！守れ地球！の理数学習を進める。宇宙・気象への興味関心を高め、人類が今後目指すことになる宇宙に関連した産業や、地球の気候をふまえた暮らしや産業をリードする人材を育成する。",
+        "宇宙・気象系列": "めざせ宇宙！守れ地球！の理数学習を進める。宇宙・気象への興味関心を高め、人類が今後目指すことになる宇宙に関連した産業や、地球の気候をふまえた暮らしや産業をリードする人材を育成する。",
         "DX系列": "ＡＩやＩｏＴを始めとするデジタル技術を活用して、産業社会における製品やサービス、ビジネスモデルそのものを変革する等、新たな価値を創造する人材を育成する。",
-        "兵庫からスタートアップ系列": "豊かな観光資源に恵まれた兵庫の魅力について学び、それを生かした仕事の創出やまちおこし、観光ビジネスに力を発揮できる、アントレプレナーシップを有する人材を育成する。",
-        "スポーツアウトドアと防災系列": "スポーツやアウトドアアクティビティといった活動と、防災活動、ボランティア活動、スポーツビジネスといった人間の社会生活を結びつけ、新たな価値や生きがいを創出することのできる人材を育成する。",
+        "ひょうごからスタートアップ系列": "豊かな観光資源に恵まれた兵庫の魅力について学び、それを生かした仕事の創出やまちおこし、観光ビジネスに力を発揮できる、アントレプレナーシップを有する人材を育成する。",
+        "スポーツ・アウトドアと防災系列": "スポーツやアウトドアアクティビティといった活動と、防災活動、ボランティア活動、スポーツビジネスといった人間の社会生活を結びつけ、新たな価値や生きがいを創出することのできる人材を育成する。",
         "ダイバーシティー&インクルージョン系列": "文化や年齢・様々な特性等を超えて、多様な人々と関わり理解し合うための学びを通じて、互いを認め合い生かし合えるグローバルなビジネスや文化、共生社会の擔い手となる人材を育成する。",
         "リベラルアーツ理系系列": "理数教育を軸としつつ、幅広い視野を養います。複雑化する社会の諸問題に対して数理・科学的な多角的視点を持ってアプローチし、自分らしく生きるための教養を身に付ける。",
         "リベラルアーツ文系系列": "普通科の教育課程に準じた科目配置に加えて、芸術系の科目や「キャリア探究」を設置し、複雑化する社会の諸問題に対して様々な視点を持ち、自分らしく生きるための基本となる教養を身に付ける。"
