@@ -257,7 +257,7 @@ elif st.session_state.step == 'Q1':
             st.rerun()
 
 elif st.session_state.step == 'Q2':
-  st.subheader("Q2. 旅の途中で、見たこともない奇妙な形の植物を見つけました。最初に思うことは？")
+  st.subheader("Q2. 旅の途中で、見たこともない奇妙な形の植物を見つけました。最初にすることは？")
   col1, col2, col3, col4 = st.columns(4)
   with col1:
       if st.button("A. 植物を観察する", use_container_width=True):
