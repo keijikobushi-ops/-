@@ -512,12 +512,6 @@ elif st.session_state.step == 'goal':
         st.session_state.scores = {k: 0 for k in st.session_state.scores}
         st.rerun()
 
-
-    st.divider()
-    if st.button("最初からやり直す", type="primary", use_container_width=True):
-        reset_app()
-        st.rerun()
-
 # --- 共通の戻るボタン (スタート画面と結果画面以外で表示) ---
 if st.session_state.step not in ['start', 'goal']:
     st.divider()
