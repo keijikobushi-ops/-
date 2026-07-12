@@ -16,10 +16,6 @@ DESCRIPTIONS = {
 }
 
 # 追加機能：向いているキーワード
-    st.write("---")
-    st.write("**🔍 この系列に向いているキーワード**")
-
-# 追加機能：向いているキーワード
 KEYWORDS = {
     "宇宙気象系列": ["宇宙開発", "環境保護", "気象観測", "理数探究"],
     "DX系列": ["プログラミング", "AI活用", "ビジネス変革", "論理的思考"],
@@ -496,7 +492,11 @@ elif st.session_state.step == 'goal':
         st.write(f"- {series}: {score}点")
 
     # 追加機能：向いているキーワード
-　　　# highest_series（一番高かった系列）のキーワードを取得
+    st.write("---")
+    st.write("**🔍 この系列に向いているキーワード**")
+
+    # 追加機能：向いているキーワーdo
+    # highest_series（一番高かった系列）のキーワードを取得
     current_keywords = KEYWORDS.get(highest_series, [])
     
     if current_keywords:
