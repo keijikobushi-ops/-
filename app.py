@@ -543,7 +543,7 @@ elif st.session_state.step == 'goal':
         st.write("該当するキーワードがありません。")
 
     st.write("---")
-    st.write("※あくまでも診断です。魔にうけないようにしてくだい")
+    st.write("※あくまでも診断です。真にうけないようにしてくだい")
  
     st.divider()
     if st.button("最初からやり直す", type="primary", use_container_width=True):
