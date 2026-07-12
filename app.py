@@ -27,7 +27,7 @@ KEYWORDS = {
 }
 
 # 追加機能: 学校生活ヒントの定義
-SCHOOL_TIPS = [    
+SCHOOL_TIPS = [
     "色々なクラブ活動に参加して、新しい友達を作ろう！",
     "先生や先輩に気軽に質問してみよう。きっと新しい発見があるよ！",
     "興味のあることには積極的に挑戦しよう。それが未来につながる第一歩！",
@@ -44,6 +44,7 @@ if 'history_steps' not in st.session_state:
     st.session_state.history_steps = ['start']  # 戻る機能用の遷移履歴
 if 'diagnosis_history' not in st.session_state:
     st.session_state.diagnosis_history = []  # 診断結果履歴
+
 
 # --- 関数定義 ---
 def move_to(next_step):
@@ -87,6 +88,7 @@ with st.sidebar:
     st.markdown("- [北神戸総合高校 HP](https://dmzcms.hyogo-c.ed.jp/kitakobesogo-hs/NC3/)")
     st.markdown("- [学校案内パンフレット](https://dmzcms.hyogo-c.ed.jp/kitakobesogo-hs/NC3/wysiwyg/file/download/1/151)")
     # ... インスタリンクは既存コード通り (省略せず表示)
+    st.markdown("- [KIKS委員公式インスタグラム](https://www.instagram.com/kitakobe_kiks.pr/?hl=ja$0)")
     st.markdown("- [KIKS男子ソフトテニスインスタグラム](https://www.instagram.com/kiks_soft.tennis_club01/)")
     st.markdown("- [KIKS女子ソフトテニスインスタグラム](https://www.instagram.com/kiks1__soft_tennis/)")
     st.markdown("- [KIKS卓球部インスタグラム](https://www.instagram.com/kiks_ttc/)")
@@ -104,11 +106,22 @@ with st.sidebar:
 st.title("🎓 新入生のための系列選択ナビ")
 
 # プログレスバー
-steps_map = {'IE': 30, 'YES': 40, 'NOT': 10, 'IIE': 20, 'rikei': 70, 'bunnkei': 70, 'tinomanabi': 90, 'zinnnomanabi': 90, 'goal': 100}
+steps_map = {'IE': 20, 'YES': 40, 'NOT': 40, 'rikei': 70, 'bunnkei': 70, 'tinomanabi': 90, 'zinnnomanabi': 90, 'goal': 100}
 if st.session_state.step in steps_map:
     progress = steps_map[st.session_state.step]
     st.progress(progress / 100)
     st.caption(f"診断の進み具合: {progress}%")
+
+if 'scores' not in st.session_state:
+    st.session_state.scores = {
+        "宇宙気象系列": 0,
+        "DX系列": 0,
+        "リベラルアーツ理系系列": 0,
+        "兵庫からスタートアップ系列": 0,
+        "スポーツアウトドアと防災系列": 0,
+        "ダイバーシティー&インクルージョン系列": 0,
+        "リベラルアーツ文系系列": 0
+    }
 
 # --- 各画面の出し分け ---
 
@@ -196,17 +209,17 @@ elif st.session_state.step == 'IE':
     st.subheader("Q1. 北神戸総合高校は好きですか？")
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("はい！", use_container_width=True): move_to('YES'); st.rerun()
+        if st.button("はい!",use_container_width=True): move_to("Q1"); st.rerun()
     with col2:
-        if st.button("いいえ", use_container_width=True): move_to('NOT'); st.rerun()
+        if st.button("いいえ",use_container_width=True): move_to("NOT"); st.rerun()
 
 elif st.session_state.step == 'NOT':
     st.subheader("Q1. 本当に好きじゃないですか？")
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("はい", use_container_width=True): move_to('IIE'); st.rerun()
+        if st.button("はい",use_container_width=True): move_to("IIE"); st.rerun()
     with col2:
-        if st.button("いいえ", use_container_width=True): move_to('YES'); st.rerun()
+        if st.button("いいえ",use_container_width=True):move_to("Q1"); st.rerun()
 
 elif st.session_state.step == 'IIE':
     st.subheader("Q1. 本当にそうですか？")
@@ -214,48 +227,269 @@ elif st.session_state.step == 'IIE':
     with col1:
         if st.button("はい", use_container_width=True): move_to('NOT'); st.rerun()
     with col2:
-        if st.button("いいえ", use_container_width=True): move_to('YES'); st.rerun()
+        if st.button("いいえ", use_container_width=True): move_to('Q1'); st.rerun()
 
-elif st.session_state.step == 'YES':
-    st.subheader("Q2. あなたの得意（または好き）なのはどっち？")
-    col1, col2 = st.columns(2)
+elif st.session_state.step == 'Q1':
+    st.subheader("Q1. 目の前に「絶対に開かない宝箱」があります。あなたならどうする？")
+    col1, col2, col3, col4 = st.columns(4)
     with col1:
-        if st.button("論理的に考える（思考判断）", use_container_width=True): move_to('rikei'); st.rerun()
+        if st.button("A. 道具を使って開ける", use_container_width=True):
+            st.session_state.scores["リベラルアーツ理系系列"] += 1
+            st.session_state.step = 'Q2'
+            st.rerun()
     with col2:
-        if st.button("知識を積み上げる（暗記）", use_container_width=True): move_to('bunnkei'); st.rerun()
+        if st.button("B. 箱を観察する", use_container_width=True):
+            st.session_state.scores["宇宙気象系列"] += 1
+            st.session_state.step = 'Q2'
+            st.rerun()
+    with col3:
+        if st.button("C. 人と協力して開ける", use_container_width=True):
+            st.session_state.scores["ダイバーシティー＆インクルージョン系列"] += 1
+            st.session_state.step = 'Q2'
+            st.rerun()
+    with col4:
+        if st.button("D. 箱の仕組みを考える", use_container_width=True):
+            st.session_state.scores["リベラルアーツ文系系列"] += 1
+            st.session_state.step = 'Q2'
+            st.rerun()
 
-elif st.session_state.step == 'rikei':
-    st.subheader("Q3. どちらの分野により惹かれますか？")
-    if st.button("宇宙・気象", use_container_width=True): st.session_state.result = "宇宙気象系列"; move_to('goal'); st.rerun()
-    if st.button("DX・プログラミング", use_container_width=True): st.session_state.result = "DX系列"; move_to('goal'); st.rerun()
-    if st.button("幅広く探究したい", use_container_width=True): st.session_state.result = "リベラルアーツ理系系列"; move_to('goal'); st.rerun()
+elif st.session_state.step == 'Q2':
+  st.subheader("Q2. 旅の途中で、見たこともない奇妙な形の植物を見つけました。最初に思うことは？")
+  col1, col2, col3, col4 = st.columns(4)
+  with col1:
+      if st.button("A. 植物を観察する", use_container_width=True):
+            st.session_state.scores["宇宙気象系列系列"] += 1
+            st.session_state.step = 'Q3'
+            st.rerun()
+  with col2:
+      if st.button("B.店を開いてお土産として売る", use_container_width=True):
+            st.session_state.scores["兵庫からスタートアップ系列系列"] += 1
+            st.session_state.step = 'Q3'
+            st.rerun()
+  with col3:
+      if st.button("C. 友達に言葉で伝える", use_container_width=True):
+            st.session_state.scores["リベラルアーツ文系系列"] += 1
+            st.session_state.step = 'Q3'
+            st.rerun()
+  with col4:
+      if st.button("D. 注意を促す看板を作る", use_container_width=True):
+            st.session_state.scores["スポーツアウトドアと防災系列"] += 1
+            st.session_state.step = 'Q3'
+            st.rerun()
 
-elif st.session_state.step == 'bunnkei':
-    st.subheader("Q3. どのような活動に興味がありますか？")
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("地域・観光・防災", use_container_width=True): move_to('tinomanabi'); st.rerun()
-    with col2:
-        if st.button("文化・歴史・多様性", use_container_width=True): move_to('zinnnomanabi'); st.rerun()
+elif st.session_state.step == 'Q3':
+  st.subheader("Q3. あなたはタイムマシンで「22世紀の未来」へ飛ばされました。最初にチェックするものは？")
+  col1, col2, col3, col4 = st.columns(4)
+  with col1:
+      if st.button("A. スマホやPCなどの文明の進化", use_container_width=True):
+            st.session_state.scores["DX系列"] += 1
+            st.session_state.step = 'Q4'
+            st.rerun()
+  with col2:
+      if st.button("B. 火星や月への移住", use_container_width=True):
+            st.session_state.scores["宇宙気象系列"] += 1
+            st.session_state.step = 'Q4'
+            st.rerun()
+  with col3:
+      if st.button("C. 昔の建物や伝統文化", use_container_width=True):
+            st.session_state.scores["リベラルアーツ文系系列"] += 1
+            st.session_state.step = 'Q4'
+            st.rerun()
+  with col4:
+      if st.button("D.科学技術やエネルギー事情", use_container_width=True):
+            st.session_state.scores["リベラルアーツ理系系列系列"] += 1
+            st.session_state.step = 'Q4'
+            st.rerun()
 
-elif st.session_state.step == 'tinomanabi':
-    st.subheader("Q4. 将来、身につけたい力は？")
-    if st.button('企画・マーケティング', use_container_width=True): st.session_state.result = "兵庫からスタートアップ系列"; move_to('goal'); st.rerun()
-    if st.button('スポーツ・リーダーシップ', use_container_width=True): st.session_state.result = "スポーツアウトドアと防災系列"; move_to('goal'); st.rerun()
+elif st.session_state.step == 'Q4':
+  st.subheader("Q4. 友達と2人で無人島に漂流してしまいました。あなたの担当（役割）はどれ？")
+  col1, col2, col3, col4 = st.columns(4)
+  with col1:
+      if st.button("A. 周囲を散策し地図を作る", use_container_width=True):
+            st.session_state.scores["DX系列"] += 1
+            st.session_state.step = 'Q5'
+            st.rerun()
+  with col2:
+      if st.button("B. 危ないところがないか確認する", use_container_width=True):
+            st.session_state.scores["スポーツアウトドアと防災系列"] += 1
+            st.session_state.step = 'Q5'
+            st.rerun()
+  with col3:
+      if st.button("C. ルールを決める", use_container_width=True):
+            st.session_state.scores["ダイバーシティー＆インクルージョン系列"] += 1
+            st.session_state.step = 'Q5'
+            st.rerun()
+  with col4:
+     if st.button("D. 娯楽を作る", use_container_width=True):
+            st.session_state.scores["リベラルアーツ文系系列"] += 1
+            st.session_state.step = 'Q5'
+            st.rerun()
 
-elif st.session_state.step == 'zinnnomanabi':
-    st.subheader("Q4. 言語や芸術、多文化に関わりたいですか？")
-    if st.button('興味がある', use_container_width=True): st.session_state.result = "ダイバーシティー&インクルージョン系列"; move_to('goal'); st.rerun()
-    if st.button('教養を深めたい', use_container_width=True): st.session_state.result = "リベラルアーツ文系系列"; move_to('goal'); st.rerun()
+elif st.session_state.step == 'Q5':
+  st.subheader("Q5. 魔法の絵の具をもらいました。描いた絵が本物になるとしたら、何を描く？")
+  col1, col2, col3, col4 = st.columns(4)
+  with col1:
+      if st.button("A. 超高性能なPC", use_container_width=True):
+            st.session_state.scores["DX系列"] += 1
+            st.session_state.step = 'Q6'
+            st.rerun()
+  with col2:
+      if st.button("B. ゴミをエネルギーに変えるマシン", use_container_width=True):
+            st.session_state.scores["宇宙気象系列"] += 1
+            st.session_state.step = 'Q6'
+            st.rerun()
+  with col3:
+      if st.button("C. 新しいお店やテーマパーク", use_container_width=True):
+            st.session_state.scores["兵庫からスタートアップ系列"] += 1
+            st.session_state.step = 'Q6'
+            st.rerun()
+  with col4:
+      if st.button("D翻訳機能付きのイヤリング. ", use_container_width=True):
+            st.session_state.scores["ダイバーシティー&インクルージョン系列"] += 1
+            st.session_state.step = 'Q6'
+            st.rerun()
+
+elif st.session_state.step == 'Q6':
+  st.subheader("Q朝起きたら、なぜか自分の体が「透明人間」になっていました！最初にする行動は？")
+  col1, col2, col3, col4 = st.columns(4)
+  with col1:
+      if st.button("A. 国家機密を盗み出す", use_container_width=True):
+            st.session_state.scores["DX系列"] += 1
+            st.session_state.step = 'Q7 '
+            st.rerun()
+  with col2:
+      if st.button("B. バズってる店の裏側をみる", use_container_width=True):
+            st.session_state.scores["兵庫からスタートアートアップ系列"] += 1
+            st.session_state.step = 'Q7'
+            st.rerun()
+  with col3:
+      if st.button("C. 人助けをする", use_container_width=True):
+            st.session_state.scores["スポーツアウトドアと防災系列"] += 1
+            st.session_state.step = 'Q7'
+            st.rerun()
+  with col4:
+      if st.button("D. 閉館後の美術館や図書館に行く", use_container_width=True):
+            st.session_state.scores["系列"] += 1
+            st.session_state.step = 'Q7'
+            st.rerun()
+
+elif st.session_state.step == 'Q7':
+  st.subheader("Q7. 学校の自動販売機に「？ボタン」という謎のボタンが出現しました。あなたなら？")
+  col1, col2, col3, col4 = st.columns(4)
+  with col1:
+      if st.button("A. 出てきたものを記録し統計をとる", use_container_width=True):
+            st.session_state.scores["リベラルアーツ理系系列"] += 1
+            st.session_state.step = 'Q8'
+            st.rerun()
+  with col2:
+      if st.button("B. 新しいビジネスとして広める", use_container_width=True):
+            st.session_state.scores["兵庫からスタートアップ系列"] += 1
+            st.session_state.step = 'Q8'
+            st.rerun()
+  with col3:
+      if st.button("C. 友達と何が出てくるか相談して押す", use_container_width=True):
+            st.session_state.scores["ダイバーシティー&インクルージョン系列"] += 1
+            st.session_state.step = 'Q8'
+            st.rerun()
+  with col4:
+      if st.button("D. 誰が仕掛けてるか考える", use_container_width=True):
+            st.session_state.scores["リベラルアーツ文系系列"] += 1
+            st.session_state.step = 'Q8'
+            st.rerun()
+
+elif st.session_state.step == 'Q8':
+  st.subheader("Q8. あなたは映画の監督になりました。どんなジャンルの作品を撮りたい？")
+  col1, col2, col3, col4 = st.columns(4)
+  with col1:
+      if st.button("A. AIが人類を救う物語", use_container_width=True):
+            st.session_state.scores["DX系列"] += 1
+            st.session_state.step = 'Q9'
+            st.rerun()
+  with col2:
+      if st.button("B. 壮大な自然のドキュメンタリー", use_container_width=True):
+            st.session_state.scores["宇宙気象系列"] += 1
+            st.session_state.step = 'Q9'
+            st.rerun()
+  with col3:
+      if st.button("C. 寂れた港町を復興させる物語", use_container_width=True):
+            st.session_state.scores["兵庫からスタートアップ系列"] += 1
+            st.session_state.step = 'Q9'
+            st.rerun()
+  with col4:
+      if st.button("D. 人々が、音楽を通じて一つになる物語", use_container_width=True):
+            st.session_state.scores["ダイバーシティー&インクルージョン系列"] += 1
+            st.session_state.step = 'Q9'
+            st.rerun()
+
+elif st.session_state.step == 'Q9':
+  st.subheader("Q9. 街で迷子になっている外国人の子供を見かけました。言葉が通じないようです。どうする？")
+  col1, col2, col3, col4 = st.columns(4)
+  with col1:
+      if st.button("A. 翻訳アプリで会話", use_container_width=True):
+            st.session_state.scores["DX系列"] += 1
+            st.session_state.step = 'Q10'
+            st.rerun()
+  with col2:
+      if st.button("B. 身振り手振りのジェスチャーで安心させる", use_container_width=True):
+            st.session_state.scores["ダイバーシティー&インクルージョン系列"] += 1
+            st.session_state.step = 'Q10'
+            st.rerun()
+  with col3:
+      if st.button("C. 周りの大人や警察にすぐ連絡する", use_container_width=True):
+            st.session_state.scores["スポーツアウトドアと防災系列"] += 1
+            st.session_state.step = 'Q10'
+            st.rerun()
+  with col4:
+      if st.button("D. 子供を観察しその子に適した手助けをする", use_container_width=True):
+            st.session_state.scores["リベラルアーツ文系系列"] += 1
+            st.session_state.step = 'Q10'
+            st.rerun()
+
+elif st.session_state.step == 'Q10':
+  st.subheader("Q10. 1日だけ「校長先生」になれるチケットを手に入れました。何を企画する？")
+  col1, col2, col3, col4 = st.columns(4)
+  with col1:
+      if st.button("A. 全校生徒でeスポーツ大会を開く", use_container_width=True):
+            st.session_state.scores["DX系列"] += 1
+            st.session_state.step = 'Q'
+            st.rerun()
+  with col2:
+      if st.button("B. みんなでBBQ＆キャンプをする", use_container_width=True):
+            st.session_state.scores["スポーツアウトドアと防災系列"] += 1
+            st.session_state.step = 'Q'
+            st.rerun()
+  with col3:
+      if st.button("C. お互いがダンスやアートなどを披露する", use_container_width=True):
+            st.session_state.scores["ダイバーシティー&インクルージョン系列"] += 1
+            st.session_state.step = 'Q'
+            st.rerun()
+  with col4:
+      if st.button("D. 時間割をなくし自由登校にする", use_container_width=True):
+            st.session_state.scores["リベラルアーツ文系系列"] += 1
+            st.session_state.step = 'Q'
+            st.rerun()
 
 # --- 結果画面 ---
 elif st.session_state.step == 'goal':
     st.balloons()
-    res = st.session_state.result
-    save_diagnosis(res) # 履歴保存
-    st.success(f"あなたにおすすめなのは…\n\n## **【{res}】**")
-
-    st.info(DESCRIPTIONS.get(res, ""))
+    highest_series = max(st.session_state.scores, key=st.session_state.scores.get)
+    st.success(f"診断完了！あなたにおすすめなのは…\n\n## 🌟 **【{highest_series}】**")
+    
+    descriptions = {
+        "宇宙気象系列": "めざせ宇宙！守れ地球！の理数学習を進める。宇宙・気象への興味関心を高め、人類が今後目指すことになる宇宙に関連した産業や、地球の気候をふまえた暮らしや産業をリードする人材を育成する。",
+        "DX系列": "ＡＩやＩｏＴを始めとするデジタル技術を活用して、産業社会における製品やサービス、ビジネスモデルそのものを変革する等、新たな価値を創造する人材を育成する。",
+        "兵庫からスタートアップ系列": "豊かな観光資源に恵まれた兵庫の魅力について学び、それを生かした仕事の創出やまちおこし、観光ビジネスに力を発揮できる、アントレプレナーシップを有する人材を育成する。",
+        "スポーツアウトドアと防災系列": "スポーツやアウトドアアクティビティといった活動と、防災活動、ボランティア活動、スポーツビジネスといった人間の社会生活を結びつけ、新たな価値や生きがいを創出することのできる人材を育成する。",
+        "ダイバーシティー&インクルージョン系列": "文化や年齢・様々な特性等を超えて、多様な人々と関わり理解し合うための学びを通じて、互いを認め合い生かし合えるグローバルなビジネスや文化、共生社会の擔い手となる人材を育成する。",
+        "リベラルアーツ理系系列": "理数教育を軸としつつ、幅広い視野を養います。複雑化する社会の諸問題に対して数理・科学的な多角的視点を持ってアプローチし、自分らしく生きるための教養を身に付ける。",
+        "リベラルアーツ文系系列": "普通科の教育課程に準じた科目配置に加えて、芸術系の科目や「キャリア探究」を設置し、複雑化する社会の諸問題に対して様々な視点を持ち、自分らしく生きるための基本となる教養を身に付ける。"
+    }
+    st.info(descriptions[highest_series])
+    
+    st.divider()
+    st.write("📊 **キミの診断結果スコア**")
+    for series, score in st.session_state.scores.items():
+        st.write(f"- {series}: {score}点")
 
     # 追加機能：向いているキーワード
     st.write("---")
