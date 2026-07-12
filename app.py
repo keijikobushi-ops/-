@@ -16,6 +16,10 @@ DESCRIPTIONS = {
 }
 
 # 追加機能：向いているキーワード
+    st.write("---")
+    st.write("**🔍 この系列に向いているキーワード**")
+
+# 追加機能：向いているキーワード
 KEYWORDS = {
     "宇宙気象系列": ["宇宙開発", "環境保護", "気象観測", "理数探究"],
     "DX系列": ["プログラミング", "AI活用", "ビジネス変革", "論理的思考"],
@@ -492,15 +496,22 @@ elif st.session_state.step == 'goal':
         st.write(f"- {series}: {score}点")
 
     # 追加機能：向いているキーワード
-    # ◯ 修正案：今回の変数（highest_series）に合わせる場合
+　　　# highest_series（一番高かった系列）のキーワードを取得
+    current_keywords = KEYWORDS.get(highest_series, [])
+    
+    if current_keywords:
+        k_cols = st.columns(len(current_keywords))
+        for i, kw in enumerate(current_keywords):
+            k_cols[i].markdown(f"✅ {kw}")
+    else:
+        st.write("該当するキーワードがありません。")
+ 
+    st.divider()
+    if st.button("最初からやり直す", type="primary", use_container_width=True):
+        st.session_state.step = 'start'
+        st.session_state.scores = {k: 0 for k in st.session_state.scores}
+        st.rerun()
 
-    # KEYWORDS という辞書データがプログラムのどこかで定義されているか確認してください。
-    # もし定義されているなら、res を highest_series に書き換えます。
-    if 'KEYWORDS' in globals():
-        keywords_list = KEYWORDS.get(highest_series, [])
-        if keywords_list:
-            k_cols = st.columns(len(keywords_list))
-        # ...その後のループ処理など
 
     st.divider()
     if st.button("最初からやり直す", type="primary", use_container_width=True):
