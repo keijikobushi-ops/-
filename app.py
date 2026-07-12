@@ -359,7 +359,7 @@ elif st.session_state.step == 'Q6':
             st.rerun()
   with col2:
       if st.button("B. バズってる店の裏側をみる", use_container_width=True):
-            st.session_state.scores["兵庫からスタートアートアップ系列"] += 1
+            st.session_state.scores["兵庫からスタートアップ系列"] += 1
             st.session_state.step = 'Q7'
             st.rerun()
   with col3:
