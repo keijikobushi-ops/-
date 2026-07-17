@@ -295,7 +295,7 @@ elif st.session_state.step == 'Q3':
             st.rerun()
   with col3:
       if st.button("C. 地元の建物や伝統文化", use_container_width=True):
-            st.session_state.scores["兵庫からスタートアップ"] += 1
+            st.session_state.scores["兵庫からスタートアップ系列"] += 1
             st.session_state.step = 'Q4'
             st.rerun()
   with col4:
