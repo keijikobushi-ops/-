@@ -252,7 +252,7 @@ elif st.session_state.step == 'Q1':
             st.rerun()
     with col4:
         if st.button("D. 箱の仕組みを考える", use_container_width=True):
-            st.session_state.scores["リベラルアーツ文系系列"] += 1
+            st.session_state.scores["リベラルアーツ理系系列"] += 1
             st.session_state.step = 'Q2'
             st.rerun()
 
@@ -294,8 +294,8 @@ elif st.session_state.step == 'Q3':
             st.session_state.step = 'Q4'
             st.rerun()
   with col3:
-      if st.button("C. 昔の建物や伝統文化", use_container_width=True):
-            st.session_state.scores["リベラルアーツ文系系列"] += 1
+      if st.button("C. 地元の建物や伝統文化", use_container_width=True):
+            st.session_state.scores["兵庫からスタートアップ"] += 1
             st.session_state.step = 'Q4'
             st.rerun()
   with col4:
@@ -308,8 +308,8 @@ elif st.session_state.step == 'Q4':
   st.subheader("Q4. 友達と2人で無人島に漂流してしまいました。あなたの担当（役割）はどれ？")
   col1, col2, col3, col4 = st.columns(4)
   with col1:
-      if st.button("A. 周囲を散策し地図を作る", use_container_width=True):
-            st.session_state.scores["DX系列"] += 1
+      if st.button("A. 周囲を散策し観察する", use_container_width=True):
+            st.session_state.scores["宇宙・気象系列"] += 1
             st.session_state.step = 'Q5'
             st.rerun()
   with col2:
@@ -457,13 +457,13 @@ elif st.session_state.step == 'Q10':
             st.session_state.step = 'suki'
             st.rerun()
   with col2:
-      if st.button("B. みんなでBBQ＆キャンプをする", use_container_width=True):
+      if st.button("B. みんなでBBQをする", use_container_width=True):
             st.session_state.scores["スポーツ・アウトドアと防災系列"] += 1
             st.session_state.step = 'suki'
             st.rerun()
   with col3:
-      if st.button("C. お互いがダンスやアートなどを披露する", use_container_width=True):
-            st.session_state.scores["ダイバーシティー&インクルージョン系列"] += 1
+      if st.button("C. 山にキャンプで泊まりに行く", use_container_width=True):
+            st.session_state.scores["宇宙・気象系列"] += 1
             st.session_state.step = 'suki'
             st.rerun()
   with col4:
