@@ -106,7 +106,7 @@ with st.sidebar:
         st.rerun()
 
 # --- メイン画面 ---
-st.title("🎓 新入生のための系列選択ナビ")
+st.title("🎓 系列になやむ人のための系列選択ナビ")
 
 # プログレスバー
 steps_map = {'IE': 10, 'IIE': 5, 'NOT': 5, 'Q1': 18, 'Q2': 26,'Q3': 34, 'Q4': 42, 'Q5': 50, 'Q6': 58, 'Q7': 66, 'Q8': 74, 'Q9': 82, 'Q10': 90, 'suki': 99, 'tiga': 0, 'tya': 0, 'goal': 100}
@@ -543,7 +543,7 @@ elif st.session_state.step == 'goal':
         st.write("該当するキーワードがありません。")
 
     st.write("---")
-    st.write("※あくまでも診断です。真にうけないようにしてくだい")
+    st.write("※あくまでもKIKS委員の偏見に基づいているので、今回の診断は参考程度に留めておいてくださいね！")
  
     st.divider()
     if st.button("最初からやり直す", type="primary", use_container_width=True):
