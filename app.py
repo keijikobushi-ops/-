@@ -543,7 +543,7 @@ elif st.session_state.step == 'goal':
         st.write("該当するキーワードがありません。")
 
     st.write("---")
-    st.markdown("- [公式インスタグラム](https://dmzcms.hyogo-c.ed.jp/kitakobesogo-hs/NC3/)")
+    st.markdown("- [公式インスタグラム](https://www.instagram.com/kitakobe_kiks.pr?igsh=M2MwbzN0eG4xZTNz&utm_source=qr)")
 
     st.write("---")
     st.write("※あくまでもKIKS委員の偏見に基づいているので、今回の診断は参考程度に留めておいてくださいね！")
