@@ -542,7 +542,7 @@ elif st.session_state.step == 'goal':
     else:
         st.write("該当するキーワードがありません。")
 
-    st.wrote("---")
+    st.write("---")
     st.markdown("- [公式インスタグラム](https://dmzcms.hyogo-c.ed.jp/kitakobesogo-hs/NC3/)")
 
     st.write("---")
